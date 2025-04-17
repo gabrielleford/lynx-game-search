@@ -1,0 +1,54 @@
+:root {
+  --background-color: #fbf8ef;
+  --accent-color: #16c47f;
+}
+
+.scrollContainer {
+  height: 100%;
+  background-color: var(--background-color);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 15px;
+  gap: 10px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+}
+
+.cardTitle {
+  font-weight: 600;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.horizontalList {
+  list-main-axis-gap: 15px;
+  padding-right: 15px;
+}
