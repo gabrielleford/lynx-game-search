@@ -1,12 +1,13 @@
-export const GameCard = () => {
+import type { IGamePreview } from '../types.ts';
+import { getGameImage } from '../utils.ts';
+
+export const GameCard = (props: IGamePreview) => {
+  const { id, name, cover } = props;
   return (
     <view className="card" style={{ width: '150px' }}>
-      <image
-        src="https://m.media-amazon.com/images/M/MV5BNjQzMDlkNDctYmE3Yi00ZWFiLTlmOWYtMjI4MzQ4Y2JhZjY2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-        className="image"
-      />
+      <image src={getGameImage(cover?.image_id)} className="image" />
 
-      <text className="cardTitle">Minecraft</text>
+      <text className="cardTitle">{name}</text>
     </view>
   );
 };
