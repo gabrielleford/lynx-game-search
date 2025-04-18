@@ -9,7 +9,7 @@ interface IGameCategory {
 
 export const GameCategory = (props: IGameCategory) => {
   const { title, query } = props;
-
+  console.log(query);
   const { data: games, isPending, error } = useGameQuery(query);
 
   if (isPending) return <text>Loading...</text>;

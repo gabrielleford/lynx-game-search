@@ -7,12 +7,17 @@ const useGameQuery = (query: string) => {
       method: 'POST',
       headers: {
         'client-id': 'hy53ei05j0smrli0it6bhnrjp5ctsx',
-        Authorization: 'Bearer 8wkt28qooftunhgii3uoo2c0gkgeq6',
+        Authorization: 'Bearer qsv43y4ftzpep2ogh8cmhtfr0br0ss',
         'Content-Type': 'text/plain',
         Accept: 'application/json',
       },
       body: query,
     });
+    console.log(response);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch games: ${response.statusText}`);
+    }
 
     const data = await response.json();
 
@@ -20,7 +25,7 @@ const useGameQuery = (query: string) => {
   };
 
   return useQuery({
-    queryKey: ['queriedGames', query],
+    queryKey: ['gameQuery', query],
     queryFn: getQueriedGames,
   });
 };
