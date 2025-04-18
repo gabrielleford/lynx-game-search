@@ -65,3 +65,8 @@
   width: 20px;
   aspect-ratio: 1;
 }
+
+.gameName {
+  font-size: 25px;
+  font-weight: 600;
+}
