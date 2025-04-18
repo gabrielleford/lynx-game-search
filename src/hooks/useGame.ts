@@ -1,8 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import type { IGamePreview } from '../types.ts';
+import type { IGame } from '../types.ts';
 
-const useGameQuery = (query: string) => {
-  const getQueriedGames = async (): Promise<IGamePreview[]> => {
+const useGame = (id: string) => {
+  const getGame = async (): Promise<IGame> => {
+    const query = `
+    fields id, name, cover.image_id, genres.name, involved_companies.company.name, platforms.name, release_dates.human, screenshots.image_id, similar_games.id, similar_games.name, similar_games.cover.image_id, summary;
+    where id = ${id};
+    `;
+
     const response = await fetch('https://api.igdb.com/v4/games', {
       method: 'POST',
       headers: {
@@ -13,23 +18,25 @@ const useGameQuery = (query: string) => {
       },
       body: query,
     });
+    console.log(response);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch games: ${response.statusText}`);
     }
 
     const data = await response.json();
+    console.log(data[0]);
 
-    return data;
+    return data[0];
   };
 
   return useQuery({
-    queryKey: ['gameQuery', query],
-    queryFn: getQueriedGames,
+    queryKey: ['game', id],
+    queryFn: getGame,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     staleTime: Infinity,
   });
 };
 
-export default useGameQuery;
+export default useGame;

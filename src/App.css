@@ -30,6 +30,7 @@
   width: 100%;
   aspect-ratio: 3/4;
   border-radius: 10px;
+  border: 1px solid #000;
 }
 
 .cardTitle {
@@ -51,4 +52,16 @@
 .horizontalList {
   list-main-axis-gap: 15px;
   padding-right: 15px;
+}
+
+.backButton {
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 100%;
+  align-self: flex-start;
+}
+
+.backIcon {
+  width: 20px;
+  aspect-ratio: 1;
 }
