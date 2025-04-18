@@ -12,7 +12,7 @@ root.render(
     <MemoryRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/game-details" element={<GameDetailsScreen />} />
+        <Route path="/game-details/:id" element={<GameDetailsScreen />} />
       </Routes>
     </MemoryRouter>
     ,

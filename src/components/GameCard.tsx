@@ -7,7 +7,11 @@ export const GameCard = (props: IGamePreview) => {
   const { id, name, cover } = props;
 
   return (
-    <view className="card" style={{ width: '150px' }}>
+    <view
+      className="card"
+      style={{ width: '150px' }}
+      bindtap={() => nav(`/game-details/${id}`)}
+    >
       <image src={getGameImage(cover?.image_id)} className="image" />
 
       <text className="cardTitle">{name}</text>

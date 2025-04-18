@@ -27,6 +27,9 @@ const useGameQuery = (query: string) => {
   return useQuery({
     queryKey: ['gameQuery', query],
     queryFn: getQueriedGames,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    staleTime: Infinity,
   });
 };
 
