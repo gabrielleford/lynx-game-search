@@ -4,7 +4,7 @@ import type { IGame } from '../types.ts';
 const useGame = (id: string) => {
   const getGame = async (): Promise<IGame> => {
     const query = `
-    fields id, name, cover.image_id, genres.name, involved_companies.company.name, platforms.name, release_dates.human, screenshots.image_id, similar_games.id, similar_games.name, similar_games.cover.image_id, summary;
+    fields id, name, cover.image_id, rating, rating_count, genres.name, involved_companies.company.name, platforms.name, release_dates.human, screenshots.image_id, similar_games.id, similar_games.name, similar_games.cover.image_id, summary;
     where id = ${id};
     `;
 
@@ -18,7 +18,6 @@ const useGame = (id: string) => {
       },
       body: query,
     });
-    console.log(response);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch games: ${response.statusText}`);
