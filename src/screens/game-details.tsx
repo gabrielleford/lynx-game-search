@@ -38,7 +38,7 @@ export const GameDetailsScreen = () => {
 
         <image
           src={getGameImage(cover?.image_id)}
-          className="image"
+          className="image flipIn"
           style={{ width: '60%', aspectRatio: 3 / 4, alignSelf: 'center' }}
         />
 

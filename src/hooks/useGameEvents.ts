@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import type { IGame } from '../types.ts';
+import type { IGame, IGameEventPreview } from '../types.ts';
 
-const useGame = (id: string) => {
-  const getGame = async (): Promise<IGame> => {
+const useGameEvents = () => {
+  const getGameEvents = async (): Promise<IGameEventPreview[]> => {
     const query = `
-    fields id, name, cover.image_id, rating, rating_count, genres.name, involved_companies.company.name, platforms.name, release_dates.human, screenshots.image_id, similar_games.id, similar_games.name, similar_games.cover.image_id, summary;
-    where id = ${id};
+    fields id, name, event_logo.image_id, start_time;
+    sort start_time desc;
+    limit 10;
     `;
 
-    const response = await fetch('https://api.igdb.com/v4/games', {
+    const response = await fetch('https://api.igdb.com/v4/events', {
       method: 'POST',
       headers: {
         'client-id': 'hy53ei05j0smrli0it6bhnrjp5ctsx',
@@ -24,17 +25,18 @@ const useGame = (id: string) => {
     }
 
     const data = await response.json();
+    console.log(data);
 
-    return data[0];
+    return data;
   };
 
   return useQuery({
-    queryKey: ['game', id],
-    queryFn: getGame,
+    queryKey: ['gameEvents'],
+    queryFn: getGameEvents,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     staleTime: Infinity,
   });
 };
 
-export default useGame;
+export default useGameEvents;

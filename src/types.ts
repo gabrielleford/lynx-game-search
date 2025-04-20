@@ -37,3 +37,12 @@ export interface IGame extends IGamePreview {
 export interface RouteParams {
   id: string;
 }
+
+export interface IGameEventPreview {
+  id: string;
+  name: string;
+  event_logo: {
+    image_id: string;
+  };
+  start_time: string;
+}

@@ -1,5 +1,6 @@
 import './App.css';
 import { GameCategory } from './components/GameCategory.tsx';
+import { GameEvents } from './components/GameEvents.tsx';
 
 const currentTimestamp = Math.floor(Date.now() / 1000);
 
@@ -50,6 +51,7 @@ export function App() {
   return (
     <scroll-view className="scrollContainer" scroll-orientation="vertical">
       <view className="scrollContent">
+        <GameEvents />
         {gameCategories.map((category) => (
           <GameCategory key={category.id} {...category} />
         ))}
