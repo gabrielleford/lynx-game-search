@@ -5,6 +5,8 @@ import { getGameImage } from '../utils.ts';
 import ratingIcon from '../assets/rating.png';
 import { DateItem } from '../components/DateItem.tsx';
 import { useState } from '@lynx-js/react';
+import { GameList } from '../components/GameList.tsx';
+import { Loader } from '../components/Loader.tsx';
 
 export const GameDetailsScreen = () => {
   const { id } = useParams() as { id: string };
@@ -12,7 +14,7 @@ export const GameDetailsScreen = () => {
 
   const [maxLine, setMaxLine] = useState('5');
 
-  if (isPending) return <text>Loading...</text>;
+  if (isPending) return <Loader />;
 
   if (error) return <text>error: {error.message}</text>;
 
@@ -25,10 +27,12 @@ export const GameDetailsScreen = () => {
     summary,
     genres,
     screenshots,
+    platforms,
+    similar_games,
   } = game;
 
   return (
-    <scroll-view className="scrollContainer">
+    <scroll-view className="scrollContainer" scroll-orientation="vertical">
       <view className="scrollContent" style={{ padding: '20px' }}>
         <BackButton />
 
@@ -40,10 +44,12 @@ export const GameDetailsScreen = () => {
 
         <view className="gameInfo">
           <text className="gameName">{name}</text>
-          <view className="ratingContainer">
-            <image src={ratingIcon} className="ratingIcon" />
-            <text className="rating">{(rating / 10).toFixed(1)}</text>
-          </view>
+          {rating && (
+            <view className="ratingContainer">
+              <image src={ratingIcon} className="ratingIcon" />
+              <text className="rating">{(rating / 10).toFixed(1)}</text>
+            </view>
+          )}
         </view>
 
         <text className="developer">
@@ -68,7 +74,7 @@ export const GameDetailsScreen = () => {
           ))}
         </view>
 
-        <text className="heading">Screenshots</text>
+        <text className="header">Screenshots</text>
 
         <list
           scroll-orientation="horizontal"
@@ -91,6 +97,19 @@ export const GameDetailsScreen = () => {
             );
           })}
         </list>
+
+        <text className="header">You can play on</text>
+        <view className="tagContainer">
+          {platforms?.map((platform) => (
+            <text key={platform.id} className="tag">
+              {platform.name}
+            </text>
+          ))}
+        </view>
+
+        <text className="header">You may also like</text>
+
+        <GameList games={similar_games} />
       </view>
     </scroll-view>
   );

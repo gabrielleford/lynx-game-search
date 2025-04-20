@@ -14,7 +14,9 @@ export const GameCard = (props: IGamePreview) => {
     >
       <image src={getGameImage(cover?.image_id)} className="image" />
 
-      <text className="cardTitle">{name}</text>
+      <text className="cardTitle" text-maxline="2">
+        {name}
+      </text>
     </view>
   );
 };
