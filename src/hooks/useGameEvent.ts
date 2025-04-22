@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import type { IGameEventPreview } from '../types.ts';
+import type { IGameEvent } from '../types.ts';
 
-const useGameEvents = () => {
-  const getGameEvents = async (): Promise<IGameEventPreview[]> => {
+const useGameEvent = (id: string) => {
+  const getGameEvent = async (): Promise<IGameEvent> => {
     const query = `
-    fields id, name, event_logo.image_id, start_time;
-    sort start_time desc;
-    limit 10;
+    fields id, name, event_logo.image_id, start_time, description, games.name, games.cover.image_id;
+    where id = ${id};
     `;
 
     const response = await fetch('https://api.igdb.com/v4/events', {
@@ -25,17 +24,18 @@ const useGameEvents = () => {
     }
 
     const data = await response.json();
+    console.log(data[0]);
 
-    return data;
+    return data[0];
   };
 
   return useQuery({
-    queryKey: ['gameEvents'],
-    queryFn: getGameEvents,
+    queryKey: ['gameEvent', id],
+    queryFn: getGameEvent,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     staleTime: Infinity,
   });
 };
 
-export default useGameEvents;
+export default useGameEvent;

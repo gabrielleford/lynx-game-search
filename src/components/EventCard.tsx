@@ -14,7 +14,7 @@ export const EventCard = (props: IGameEventPreview) => {
     <view
       className="card"
       style={{ width: '300px' }}
-      bindtap={() => nav(`/event-details/${id}`)}
+      bindtap={() => nav(`/game-event/${id}`)}
       main-thread:bindtouchstart={handleTapStart}
       main-thread:bindtouchend={handleTapEnd}
     >

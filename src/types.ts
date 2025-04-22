@@ -46,3 +46,8 @@ export interface IGameEventPreview {
   };
   start_time: string;
 }
+
+export interface IGameEvent extends IGameEventPreview {
+  description: string;
+  games: IGamePreview[];
+}
