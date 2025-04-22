@@ -185,3 +185,8 @@
     transform: rotate(360deg);
   }
 }
+
+.eventStatus {
+  color: var(--accent-color);
+  font-weight: 500;
+}
