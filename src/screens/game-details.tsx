@@ -74,7 +74,7 @@ export const GameDetailsScreen = () => {
           ))}
         </view>
 
-        <text className="header">Screenshots</text>
+        <text className="heading">Screenshots</text>
 
         <list
           scroll-orientation="horizontal"
@@ -98,7 +98,7 @@ export const GameDetailsScreen = () => {
           })}
         </list>
 
-        <text className="header">You can play on</text>
+        <text className="heading">You can play on</text>
         <view className="tagContainer">
           {platforms?.map((platform) => (
             <text key={platform.id} className="tag">
@@ -107,7 +107,7 @@ export const GameDetailsScreen = () => {
           ))}
         </view>
 
-        <text className="header">You may also like</text>
+        <text className="heading">You may also like</text>
 
         <GameList games={similar_games} />
       </view>

@@ -11,7 +11,7 @@ export const GameEvents = () => {
 
   return (
     <view className="category">
-      <text className="header">Game Events</text>
+      <text className="heading">Game Events</text>
 
       {/* list of events */}
       <list

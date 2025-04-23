@@ -24,7 +24,6 @@ const useGameEvent = (id: string) => {
     }
 
     const data = await response.json();
-    console.log(data[0]);
 
     return data[0];
   };

@@ -7,6 +7,7 @@ const queryClient = new QueryClient();
 import { App } from './App.js';
 import { GameDetailsScreen } from './screens/game-details.tsx';
 import { GameEventScreen } from './screens/game-event.tsx';
+import { SearchScreen } from './screens/search-screen.tsx';
 
 root.render(
   <QueryClientProvider client={queryClient}>
@@ -15,6 +16,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/game-details/:id" element={<GameDetailsScreen />} />
         <Route path="/game-event/:id" element={<GameEventScreen />} />
+        <Route path="/search" element={<SearchScreen />} />
       </Routes>
     </MemoryRouter>
     ,

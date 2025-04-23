@@ -19,7 +19,7 @@ export const GameCategory = (props: IGameCategory) => {
 
   return (
     <view className="category">
-      <text className="header">{title}</text>
+      <text className="heading">{title}</text>
 
       {/* render games */}
       <GameList games={games} />
